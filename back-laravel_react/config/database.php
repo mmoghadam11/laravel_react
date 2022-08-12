@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'mongodb'),
 
     /*
     |--------------------------------------------------------------------------
@@ -92,6 +92,23 @@ return [
             // 'encrypt' => env('DB_ENCRYPT', 'yes'),
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
+
+        // 'mongodb' => [
+		//     'driver'   => 'mongodb',
+		//     'host'     => env('DB_HOST', 'localhost'),
+		//     'port'     => env('DB_PORT', 27017),
+		//     'database' => env('DB_DATABASE', 'your_db_name'),
+		//     'username' => env('DB_USERNAME', 'your_username'),
+		//     'password' => env('DB_PASSWORD', 'your_password'),
+		//     'options' => [
+		//         'database' => 'admin' // set the authentication database
+		//     ]
+        'mongodb' => [
+            'driver' => 'mongodb',
+            'dsn' => env('DB_URI', 'mongodb+srv://mahdiyar:192.168.1.1@cluster0.gkskwpy.mongodb.net/?retryWrites=true&w=majority'),
+            'database' => 'laravel_react',
+        ],
+		// ],
 
     ],
 
