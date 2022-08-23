@@ -10,17 +10,17 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     
-    private $id=0;
+    // private $id=0;
     //
     // public function __construct()
     // {
     //     $this->id = 0; 
     // }
-    public function index()
-    {
-        $id=$this->id=$this->id+1;
-        return $id; 
-    }
+    // public function index()
+    // {
+    //     $id=$this->id=$this->id+1;
+    //     return $id; 
+    // }
 
 
     public function register(Request $request)
@@ -33,7 +33,7 @@ class AuthController extends Controller
                         // |min:8
             ]);
                 $user = User::create([
-                        'id'=>$this->index(),
+                        // 'id'=>$this->index(),
                         'name' => $validatedData['name'],
                         'email' => $validatedData['email'],
                         'password' => Hash::make($validatedData['password']),
@@ -43,7 +43,7 @@ class AuthController extends Controller
             $token = $user->createToken('auth_token')->plainTextToken;
 
             return response()->json([
-                        'id'=>$this->id,
+                        // 'id'=>$this->id,
                         'access_token' => $token,
                             'token_type' => 'Bearer',
             ]);
@@ -66,6 +66,13 @@ class AuthController extends Controller
                     'access_token' => $token,
                     'token_type' => 'Bearer',
             ]);
+        }    
+
+
+    public function logout()
+        {
+            Auth::logout();
+            return response()->json(['message' => 'Logged Out'], 200);
         }    
 
     public function me(Request $request)
