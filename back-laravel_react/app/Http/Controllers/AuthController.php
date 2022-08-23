@@ -10,8 +10,19 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     
-    protected $id=1;
+    private $id=0;
     //
+    // public function __construct()
+    // {
+    //     $this->id = 0; 
+    // }
+    public function index()
+    {
+        $id=$this->id=$this->id+1;
+        return $id; 
+    }
+
+
     public function register(Request $request)
         {
             
@@ -22,17 +33,17 @@ class AuthController extends Controller
                         // |min:8
             ]);
                 $user = User::create([
-                        // 'id'=>$this->id,
+                        'id'=>$this->index(),
                         'name' => $validatedData['name'],
                         'email' => $validatedData['email'],
                         'password' => Hash::make($validatedData['password']),
                 ]);
-                $this->id=$this->id+1;
+                
 
             $token = $user->createToken('auth_token')->plainTextToken;
 
             return response()->json([
-                        'id'=>$this->id-1,
+                        'id'=>$this->id,
                         'access_token' => $token,
                             'token_type' => 'Bearer',
             ]);
