@@ -34,10 +34,17 @@ class AuthController extends Controller
             ]);
                 $user = User::create([
                         // 'id'=>$this->index(),
+                        
                         'name' => $validatedData['name'],
                         'email' => $validatedData['email'],
                         'password' => Hash::make($validatedData['password']),
                 ]);
+                // $user = new User();
+                // $user->nextid(); // auto-increment
+                // $user->name = $validatedData['name'];
+                // $user->email =$validatedData['email'];
+                // $user->password = Hash::make($validatedData['password']);
+                // $user->save();
                 
 
             $token = $user->createToken('auth_token')->plainTextToken;
@@ -45,7 +52,8 @@ class AuthController extends Controller
             return response()->json([
                         // 'id'=>$this->id,
                         'access_token' => $token,
-                            'token_type' => 'Bearer',
+                        'token_type' => 'Bearer',
+                        'user' => $user
             ]);
         }
 
@@ -65,6 +73,7 @@ class AuthController extends Controller
             return response()->json([
                     'access_token' => $token,
                     'token_type' => 'Bearer',
+                    'user' => $user
             ]);
         }    
 
