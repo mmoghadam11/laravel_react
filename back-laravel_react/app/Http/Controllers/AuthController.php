@@ -39,6 +39,7 @@ class AuthController extends Controller
                         'email' => $validatedData['email'],
                         'password' => Hash::make($validatedData['password']),
                 ]);
+                Auth::guard()->login($user);
                 // $user = new User();
                 // $user->nextid(); // auto-increment
                 // $user->name = $validatedData['name'];
@@ -68,6 +69,8 @@ class AuthController extends Controller
 
             $user = User::where('email', $request['email'])->firstOrFail();
 
+            # Delete the existing tokens from the database and create a new one
+            auth()->user()->tokens()->delete();
             $token = $user->createToken('auth_token')->plainTextToken;
 
             return response()->json([
@@ -78,8 +81,10 @@ class AuthController extends Controller
         }    
 
 
-    public function logout()
+    public function logout(Request $request)
         {
+            // $request->user()->currentAccessToken()->delete();
+            $request->user()->Tokens()->delete();
             Auth::logout();
             return response()->json(['message' => 'Logged Out'], 200);
         }    

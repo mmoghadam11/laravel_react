@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect,useState } from "react";
 import axios from "axios";
 import {
   NOT_LOGGED_IN,
@@ -17,13 +17,42 @@ const AppProvider = (props) => {
     hostName = "http://localhost:8000/";
   }
 
+
+  
   const [authStatus, setAuthStatus] = useState(NOT_LOGGED_IN);
+  const [token, setToken] = useState("");
+  useEffect(() => {
+    axios.defaults.withCredentials = true;
+    axios.defaults.headers.post['Content-Type'] ='application/json';
+    axios.defaults.headers.post['Accept'] ='application/json';
+    
+    if(localStorage.getItem('User_Token')!==null){
+      
+      setAuthStatus(LOGGED_IN);
+      setToken(localStorage.getItem('User_Token'))
+      if(localStorage.getItem('User_data')===null)
+      {
+        axios.defaults.headers.post['Authorization'] =`Bearer ${token}`;
+        axios.post(hostName + "api/me").then(
+          (response) => {
+          console.log(response);
+          });
+      }
+      let user_data = JSON.parse(localStorage.getItem('User_data'));
+      setUserId(user_data.id);
+      setUserName(user_data.name);
+      setErrorMessage("");
+      setAuthStatus(LOGGED_IN);
+    }
+  }, []);
+
   const [errorMessage, setErrorMessage] = useState("");
   const [userId, setUserId] = useState(0);
   const [userName, setUserName] = useState("");
   const [userNameInput, setUserNameInput] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
+  
 
   function changeAuthStatusLogin() {
     setAuthStatus(LOG_IN_FORM);
@@ -67,21 +96,25 @@ const AppProvider = (props) => {
           })
           .then(
             (response) => {
-              //console.log(response);
+              console.log("User_Token",response.data);
+              localStorage.setItem("User_Token", JSON.stringify(response.data.access_token));
+              setToken(localStorage.getItem("User_Token"));
+              localStorage.setItem("User_data", JSON.stringify(response.data.user));
               // GET USER
-              // axios.get(hostName + "api/user").then(
-                // (response) => {
-                  console.log("lll",response);
-                  setUserId(response.data.user.id);
-                  setUserName(response.data.user.name);
+              axios.get(hostName + "api/user").then(
+                (response) => {
+                  // console.log("lll",response);
+                  
+                  setUserId(response.data.id);
+                  setUserName(response.data.name);
                   setErrorMessage("");
                   setAuthStatus(LOGGED_IN);
-                // },
+                },
                 // GET USER ERROR
-                // (error) => {
-                //   setErrorMessage("get user error : could not complete the sign up");
-                // }
-              // );
+                (error) => {
+                  setErrorMessage("get user error : could not complete the sign up");
+                }
+              );
             },
             // SIGNUP ERROR
             (error) => {
@@ -127,7 +160,12 @@ const AppProvider = (props) => {
           .then(
             (response) => {
               console.log("sec",response);
-          //     // GET USER
+              // localStorage.setItem("User_Data", JSON.stringify(response.data));
+              setToken(JSON.stringify(response.data.access_token));
+              localStorage.setItem("User_Token", token);
+              localStorage.setItem("User_data", JSON.stringify(response.data.user));
+              
+               // GET USER
               axios.get(hostName + "api/user").then(
                 (response) => {
                   console.log("third",response);
@@ -142,7 +180,7 @@ const AppProvider = (props) => {
                 }
               );
             },
-          //   // LOGIN ERROR
+             // LOGIN ERROR
             (error) => {
               if (error.response) {
                 setErrorMessage(error.response.data.message);
@@ -161,13 +199,21 @@ const AppProvider = (props) => {
 
   function logout() {
     axios.defaults.withCredentials = true;
-    axios.get(hostName + "api/logout");
+    axios.defaults.headers.post['Content-Type'] ='application/json';
+    axios.defaults.headers.post['Accept'] ='application/json';
+    axios.defaults.headers.post['Authorization'] =`Bearer ${token}`;
+    axios.post(hostName + "api/logout").then(
+      (response) => {
+      // console.log(response);
+      // });
+    localStorage.clear();
     setUserId(0);
     setUserName("");
     setUserNameInput("");
     setUserEmail("");
     setUserPassword("");
     setAuthStatus(NOT_LOGGED_IN);
+      });
   }
 
   return (
