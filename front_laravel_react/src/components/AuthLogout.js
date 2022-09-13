@@ -17,12 +17,13 @@ const AuthLogout = () => {
           Logged in as {userName}
         </span>
         <div className="flex justify-center w-full">
-          <Button
-            className=""
+          <button
+            // variant="outline-warning"
+            className="btn btn-outline-warning"
             onClick={() => logout()}
           >
             Logout
-          </Button>
+          </button>
         </div>
       </Col>
       <Col sm="12" md="6">

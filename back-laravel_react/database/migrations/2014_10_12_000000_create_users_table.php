@@ -23,7 +23,7 @@ return new class extends Migration
         //     $table->timestamps();
         // });
         Schema::create('users', function ($collection) {
-            $collection->id();
+            $collection->increments('id');
             $collection->string('name');
             $collection->string('email')->unique();
             $collection->timestamp('email_verified_at')->nullable();

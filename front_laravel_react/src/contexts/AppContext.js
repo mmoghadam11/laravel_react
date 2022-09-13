@@ -202,17 +202,20 @@ const AppProvider = (props) => {
     axios.defaults.headers.post['Content-Type'] ='application/json';
     axios.defaults.headers.post['Accept'] ='application/json';
     axios.defaults.headers.post['Authorization'] =`Bearer ${token}`;
-    axios.post(hostName + "api/logout").then(
-      (response) => {
+    // axios.post(hostName + "api/logout").then(
+    //   (response) => {
       // console.log(response);
       // });
-    localStorage.clear();
-    setUserId(0);
-    setUserName("");
-    setUserNameInput("");
-    setUserEmail("");
-    setUserPassword("");
-    setAuthStatus(NOT_LOGGED_IN);
+    // localStorage.clear();
+    // setUserId(0);
+    // setUserName("");
+    // setUserNameInput("");
+    // setUserEmail("");
+    // setUserPassword("");
+    // setAuthStatus(NOT_LOGGED_IN);
+    axios.post(hostName + "api/time").then(
+      (response) => {
+        console.log(response);
       });
   }
 

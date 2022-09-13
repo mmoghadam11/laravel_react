@@ -36,6 +36,7 @@ const AuthContainer = () => {
       </div>
       <div className={showLoggedIn + " py-4"}>
         <AuthLogout />
+        
       </div>
     </Container>
   );

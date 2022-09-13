@@ -35,7 +35,7 @@ const AuthLogin = () => {
         {/* EMAIL */}
         <div className="mb-3" >
           <label><MdEmail className="" />Email address</label>
-          <input
+          <input 
             type="email"
             className="form-control"
             placeholder="Enter email"
@@ -86,8 +86,8 @@ const AuthLogin = () => {
         </div> */}
 
         {/* SUBMIT BUTTON */}
-        <div className="d-grid">
-          <Button type="submit" 
+        <div className="d-grid ">
+          <Button type="submit" variant="info" 
           className="btn btn-primary" 
           // onClick={() => login()}
           >

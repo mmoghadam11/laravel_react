@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Day;
+use App\Models\User;
+use Hekmatinasser\Verta\Verta;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +22,31 @@ Route::get('/', function () {
 
 
 Route::get('/time', function () {
-    return view('welcome');
+    $user=User::where('name','مهدیار') -> first();
+    $user2=User::where('name','میثم') -> first();
+
+    $dayData=['user'=>$user->name,'H'=>'15-23','val'=>false];
+    $today=new verta();
+    $startM=verta()->startMonth();
+    $day=verta()->startMonth();
+    $endM=verta()->endMonth();
+    $array = array();
+    while($day<=$endM)
+    {
+        $data=['data'=>$dayData,'time'=>$day->format('%B %d، %Y'),'day'=>$day->formatWord('l')];
+        array_push($array, $data);
+        $day->addDay();
+    }
+    dd($array);
+    // $data=[
+    //     '1'=>json_encode(['user'=>'']),
+    //     '2' => 'Two',
+    //     '3' => 'Three'
+    // ];
+    
+    $day = Day::create([
+        'time' => new Verta(),
+        'work' => $validatedData['email'],
+        'password' => Hash::make($validatedData['password']),
+]);
 });
