@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 // ****************************************
 use App\Models\User;
+use App\Models\Day;
 use Hekmatinasser\Verta\Verta;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
@@ -48,17 +49,18 @@ Route::get('/data', function (Request $request) {
 
 Route::middleware('auth:sanctum')->post('/time', function (Request $request) {
     $user=$request->user();
-    $dayData=['user'=>$user->name,'H'=>'15-23','val'=>false];
-    $today=new verta();
+    
+    // $today=new verta();
     $startM=verta()->startMonth();
-    $day=verta()->startMonth();
+    // $day=verta()->startMonth();
     $endM=verta()->endMonth();
     $array = array();
-    while($day<=$endM)
-    {
-        $data=['data'=>$dayData,'time'=>$day->format('%B %d، %Y'),'day'=>$day->formatWord('l')];
-        array_push($array, $data);
-        $day=$day->addDay();
+
+    $days=Day::whereBetween("time",[$startM->toCarbon(),$endM->toCarbon()])->get();
+    foreach ($days as $day){
+        $time=verta($day->time);
+        $data=['data'=>$day->data,'time'=>$time->format('%B %d، %Y'),'day'=>$time->formatWord('l'),'dayNum'=>$time->format('%d')];
+        array_push($array, $data);  
     }
     return response()->json(['calenlar'=>$array], 200);
 });

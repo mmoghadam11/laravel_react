@@ -5,8 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 // use Jenssegers\Mongodb\Eloquent\Model;
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Hekmatinasser\Verta\Verta;
 
-class Day extends Model
+class Day extends Eloquent
 {
     use HasFactory;
 
@@ -14,5 +16,11 @@ class Day extends Model
     // protected $dates = ['time'];
     protected $guarded = [''];
 
+    protected $dates = ['time'];
+
+    // public function getTimeAttribute($value)
+    //     {
+    //         return Verta($value->toDateTime());
+    //     }
     
 }

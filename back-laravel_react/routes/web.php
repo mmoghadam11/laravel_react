@@ -25,28 +25,30 @@ Route::get('/time', function () {
     $user=User::where('name','مهدیار') -> first();
     $user2=User::where('name','میثم') -> first();
 
-    $dayData=['user'=>$user->name,'H'=>'15-23','val'=>false];
+    $dayData=['user'=>$user->name,'H'=>'15:30-23:00','val'=>false];
     $today=new verta();
     $startM=verta()->startMonth();
     $day=verta()->startMonth();
     $endM=verta()->endMonth();
-    $array = array();
-    while($day<=$endM)
-    {
-        $data=['data'=>$dayData,'time'=>$day->format('%B %d، %Y'),'day'=>$day->formatWord('l')];
-        array_push($array, $data);
-        $day->addDay();
-    }
-    dd($array);
+    
+
+    $days=Day::whereBetween('time',[$startM->timestamp,$endM->timestamp])->get();
+
+    // dd(Day::get()->first()->time==$startM->toCarbon());
+    // dd(Day::whereBetween("time",[$startM->toCarbon(),$endM->toCarbon()])->get());
+    $jalali=Day::where('time',$startM->toCarbon())->get();
+    dd($jalali);
+    dd(Day::where('data','exists', 'میثم'));
+    dd($today,$today->timestamp,verta($today->timestamp));
     // $data=[
     //     '1'=>json_encode(['user'=>'']),
     //     '2' => 'Two',
     //     '3' => 'Three'
     // ];
     
-    $day = Day::create([
-        'time' => new Verta(),
-        'work' => $validatedData['email'],
-        'password' => Hash::make($validatedData['password']),
-]);
+//     $day = Day::create([
+//         'time' => new Verta()->toCarbon(),
+//         'work' => $validatedData['email'],
+//         'password' => Hash::make($validatedData['password']),
+// ]);
 });
