@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { AppContext } from "../contexts/AppContext";
+import { AppContext } from "../../contexts/AppContext";
 import AuthMenu from "./AuthMenu";
 
 import Row from 'react-bootstrap/Row';
@@ -13,17 +13,19 @@ const AuthLogout = () => {
   return (
     <Row>
       <Col sm="12" md="6">
-        <span className="">
-          Logged in as {userName}
-        </span>
         <div className="flex justify-center w-full">
           <button
             // variant="outline-warning"
-            className="btn btn-outline-warning"
+            className="btn btn-outline-warning m-3"
             onClick={() => logout()}
           >
-            Logout
+            {/* Logout */}
+            خروج
           </button>
+          <span className="d-in">
+          {/* Logged in as {userName} */}
+          !{userName} عزیز خوش آمدید
+        </span>
         </div>
       </Col>
       <Col sm="12" md="6">

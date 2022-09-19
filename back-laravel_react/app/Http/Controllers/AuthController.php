@@ -9,20 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    
-    // private $id=0;
-    //
-    // public function __construct()
-    // {
-    //     $this->id = 0; 
-    // }
-    // public function index()
-    // {
-    //     $id=$this->id=$this->id+1;
-    //     return $id; 
-    // }
-
-
     public function register(Request $request)
         {
             
@@ -32,22 +18,14 @@ class AuthController extends Controller
                         'password' => 'required|string',
                         // |min:8
             ]);
-                $user = User::create([
+            $user = User::create([
                         // 'id'=>$this->index(),
                         
                         'name' => $validatedData['name'],
                         'email' => $validatedData['email'],
                         'password' => Hash::make($validatedData['password']),
                 ]);
-                Auth::guard()->login($user);
-                // $user = new User();
-                // $user->nextid(); // auto-increment
-                // $user->name = $validatedData['name'];
-                // $user->email =$validatedData['email'];
-                // $user->password = Hash::make($validatedData['password']);
-                // $user->save();
-                
-
+            Auth::guard()->login($user);
             $token = $user->createToken('auth_token')->plainTextToken;
 
             return response()->json([
@@ -58,7 +36,9 @@ class AuthController extends Controller
             ]);
         }
 
+    // ============ 
     //login
+    // ============ 
     public function login(Request $request)
         {
             if (!Auth::attempt($request->only('email', 'password'))) {
@@ -66,9 +46,7 @@ class AuthController extends Controller
                 'message' => 'Invalid login details'
                         ], 401);
                 }
-
             $user = User::where('email', $request['email'])->firstOrFail();
-
             # Delete the existing tokens from the database and create a new one
             auth()->user()->tokens()->delete();
             $token = $user->createToken('auth_token')->plainTextToken;
@@ -81,6 +59,9 @@ class AuthController extends Controller
         }    
 
 
+    // ============    
+    // logout    
+    // ============
     public function logout(Request $request)
         {
             // $request->user()->currentAccessToken()->delete();

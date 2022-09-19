@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { AppContext } from "../contexts/AppContext";
+import { AppContext } from "../../contexts/AppContext";
 
 import { Button } from 'react-bootstrap';
 
@@ -10,24 +10,27 @@ const AuthMenu = (props) => {
   return (
     <div className="">
       <div className="">
-        Authentication
+        {/* Authentication */}
+        اهراز هویت
       </div>
       <div className="">
         Using Laravel Sanctum
       </div>
       {props.loggedIn ? null : (
         <div className="">
-          <Button
+          <Button variant="info"
             className=""
             onClick={() => changeAuthStatusSignup()}
           >
-            Signup
+            {/* Signup */}
+            ثبت نام
           </Button>
-          <Button
+          <Button variant="info"
             className=""
             onClick={() => changeAuthStatusLogin()}
           >
-            Login
+            {/* Login */}
+            ورود
           </Button>
         </div>
       )}

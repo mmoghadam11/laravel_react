@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { AppContext } from "../contexts/AppContext";
+import { AppContext } from "../../contexts/AppContext";
 import { MdEmail } from "react-icons/md";
 import { GoKey } from "react-icons/go";
 import { IoMdPerson } from "react-icons/io";

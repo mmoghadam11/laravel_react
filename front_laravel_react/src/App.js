@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import { AppProvider } from "./contexts/AppContext";
-import AuthContainer from "./components/AuthContainer";
+import AuthContainer from "./components/auth/AuthContainer";
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 function App() {

@@ -8,12 +8,12 @@ import {
   LOG_IN_FORM,
   SIGN_UP_FORM,
   LOGGED_IN,
-} from "../constants/AuthStatus";
+} from "../../constants/AuthStatus";
 import AuthNotLoggedIn from "./AuthNotLoggedIn";
 import AuthSignup from "./AuthSignup";
 import AuthLogin from "./AuthLogin";
 import AuthLogout from "./AuthLogout";
-import { AppContext } from "../contexts/AppContext";
+import { AppContext } from "../../contexts/AppContext";
 
 const AuthContainer = () => {
   const appContext = useContext(AppContext);
@@ -25,9 +25,6 @@ const AuthContainer = () => {
 
   return (
     <Container>
-      <div className={showNotLoggedIn + " py-4"}>
-        <AuthNotLoggedIn />
-      </div>
       <div className={showLoginForm + "  py-4"}>
         <AuthLogin option="login" />
       </div>
@@ -37,6 +34,9 @@ const AuthContainer = () => {
       <div className={showLoggedIn + " py-4"}>
         <AuthLogout />
         
+      </div>
+      <div className={showNotLoggedIn + " py-4"}>
+        <AuthNotLoggedIn />
       </div>
     </Container>
   );

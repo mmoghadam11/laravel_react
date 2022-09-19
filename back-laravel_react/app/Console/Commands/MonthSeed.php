@@ -32,7 +32,10 @@ class MonthSeed extends Command
      */
     public function handle()
     {
-        $today=new verta();
+        if($today=new verta()==verta()->startMonth()->subWeek())
+        {
+            
+        }
         $startM=verta()->startMonth();
         $day=verta()->startMonth();
         $endM=verta()->endMonth();
