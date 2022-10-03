@@ -21,6 +21,7 @@ const AppProvider = (props) => {
   
   const [authStatus, setAuthStatus] = useState(NOT_LOGGED_IN);
   const [token, setToken] = useState("");
+  
   useEffect(() => {
     axios.defaults.withCredentials = true;
     axios.defaults.headers.post['Content-Type'] ='application/json';
@@ -166,16 +167,22 @@ const AppProvider = (props) => {
               localStorage.setItem("User_data", JSON.stringify(response.data.user));
               
                // GET USER
-              axios.get(hostName + "api/user").then(
+              axios.post(hostName + "api/user").then(
                 (response) => {
-                  console.log("third",response);
-                  setUserId(response.data.id);
-                  setUserName(response.data.name);
+                  // console.log("third",response.data.calendar);
+                  setUserId(response.data.user.id);
+                  setUserName(response.data.user.name);
+                  // ==========
+                  //  Calendar
+                  // ==========
+                  // setCalendararray(response.data.calendar);
+                  // console.log("calendar",calendararray);
                   setErrorMessage("");
                   setAuthStatus(LOGGED_IN);
                 },
                 // GET USER ERROR
                 (error) => {
+                  console.warn(error);
                   setErrorMessage("Could not complete the login");
                 }
               );
@@ -236,6 +243,7 @@ const AppProvider = (props) => {
         signup,
         login,
         logout,
+        // calendararray,
         errorMessage,
       }}
     >

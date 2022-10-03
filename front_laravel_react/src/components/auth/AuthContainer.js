@@ -13,6 +13,7 @@ import AuthNotLoggedIn from "./AuthNotLoggedIn";
 import AuthSignup from "./AuthSignup";
 import AuthLogin from "./AuthLogin";
 import AuthLogout from "./AuthLogout";
+import Calendar from "../data/Calendar";
 import { AppContext } from "../../contexts/AppContext";
 
 const AuthContainer = () => {
@@ -33,6 +34,7 @@ const AuthContainer = () => {
       </div>
       <div className={showLoggedIn + " py-4"}>
         <AuthLogout />
+        {authStatus === LOGGED_IN &&<Calendar/>}
         
       </div>
       <div className={showNotLoggedIn + " py-4"}>

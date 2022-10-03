@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-
+use App\Services\CalendarService;
 class AuthController extends Controller
 {
     public function register(Request $request)
@@ -70,8 +70,10 @@ class AuthController extends Controller
             return response()->json(['message' => 'Logged Out'], 200);
         }    
 
-    public function me(Request $request)
+    public function me(Request $request,CalendarService $CalendarService)
         {
-            return $request->user();
+            $user=$request->user();
+            $array=$CalendarService->calendar($user);
+            return response()->json(['calendar'=>$array,'user'=>$user], 200);
         }    
 }

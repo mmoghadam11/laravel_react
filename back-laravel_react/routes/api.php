@@ -50,8 +50,8 @@ Route::get('/data', function (Request $request) {
 
 Route::middleware('auth:sanctum')->post('/time', function (Request $request,CalendarService $CalendarService) {
     $user=$request->user();
-    $array=$CalendarService->calendar();
-    return response()->json(['calenlar'=>$array], 200);
+    [$array,$dayofweek,$month,$today]=$CalendarService->calendar($user);
+    return response()->json(['calendar'=>$array,'dayofweek'=>$dayofweek,'month'=>$month,'today'=>$today], 200);
 });
 // Route::post('/me', function (Request $request) {
 //     return response()->json(['user'=>$request->user()]);

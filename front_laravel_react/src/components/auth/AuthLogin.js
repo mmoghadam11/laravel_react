@@ -31,7 +31,8 @@ const AuthLogin = () => {
     <Row>
       <Col sm="12" md="6">
         <Form onSubmit={(e) => login(e)}>
-          <h3>Login</h3>
+          {/* <h3>Login</h3> */}
+          <h3>ورود</h3>
           {/* EMAIL */}
           <div className="mb-3" >
             <label><MdEmail className="" />ایمیل</label>
@@ -61,7 +62,7 @@ const AuthLogin = () => {
 
           {/* SUBMIT BUTTON */}
           <div className="d-grid ">
-            <Button type="submit" variant="info" 
+            <Button type="submit" variant="outline-info" 
             // className="btn btn-primary" 
             // onClick={() => login()}
             >

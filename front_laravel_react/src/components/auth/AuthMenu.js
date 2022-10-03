@@ -8,25 +8,29 @@ const AuthMenu = (props) => {
   const appContext = useContext(AppContext);
   const { changeAuthStatusLogin, changeAuthStatusSignup } = appContext;
   return (
-    <div className="">
-      <div className="">
+    <div className="flex justify-center w-full">
+      {props.loggedIn ? null :(
+        <div className="">
         {/* Authentication */}
         اهراز هویت
-      </div>
-      <div className="">
-        Using Laravel Sanctum
+        </div>
+      )}
+      
+      <div className="m-3">
+        {/* Using Laravel Sanctum */}
+        تنظیم برنامه کاری
       </div>
       {props.loggedIn ? null : (
         <div className="">
-          <Button variant="info"
-            className=""
+          <Button variant="outline-info"
+            className="mt-3"
             onClick={() => changeAuthStatusSignup()}
           >
             {/* Signup */}
             ثبت نام
           </Button>
-          <Button variant="info"
-            className=""
+          <Button variant="outline-info"
+            className="mt-3"
             onClick={() => changeAuthStatusLogin()}
           >
             {/* Login */}
