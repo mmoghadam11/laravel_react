@@ -4,6 +4,7 @@ import { AppContext } from "../../contexts/AppContext";
 import { Row,Col } from 'react-bootstrap';
 import Calendarobject from './Calendarobject.js';
 import Tab from './Tab.js';
+import ModalForm from './ModalForm.js';
 import Spin from './Spin.js';
 // import { useMediaQuery } from 'react-responsive';
 
@@ -49,7 +50,19 @@ function Calendar() {
     
       useEffect(() => {
         fetchData();
-      },[]);   
+      },[]);
+  
+  // data for modal component   
+  const [dataprop, setDataprop] = useState(null);
+  const [day, setDay] = useState(null);    
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = (row,d) => {
+    setShow(true);
+    row.hasOwnProperty(userName)?setDataprop(row[userName]):setDataprop(null);
+    setDay(d);
+    console.log(dataprop,day)
+  }
   return (
     <Row className=''>
       {/* <h3>{useMediaQuery({ query: `(max-width: 760px)` })}</h3> */}
@@ -58,14 +71,18 @@ function Calendar() {
         <Row>
             <Col sm="12" md="6">
               <h4>{month} ماه</h4>
-              <Calendarobject dayNum={dayweek} calarray={calendararray}/>
+              <Calendarobject dayNum={dayweek} calarray={calendararray} onShow={handleShow} modalData={[dataprop, setDataprop]} />
             </Col>
             <Col sm="12" md="6">
               <h4> جدول {month}ماه</h4>
               <Tab dayNum={dayweek} calarray={calendararray}/>
             </Col>
         </Row>
-            
+        <Row>
+          <Col>
+              <ModalForm show={show} onClose={handleClose} modalData={dataprop} day={day}/>
+          </Col>
+        </Row>
       </Col>
         
       

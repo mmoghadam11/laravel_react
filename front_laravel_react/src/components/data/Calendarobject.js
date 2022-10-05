@@ -30,7 +30,7 @@ function Calendarobject(props) {
               cells.push(
                 <td className="calendar-day" data={row.data}>
                   {/* {console.log(row.data)} */}
-                    <Button  variant={`${row.flag? "" :"outline-dark"} d-inline rounded-circle`} >
+                    <Button  variant={`${row.flag? "outline-dark" :""} d-inline rounded-circle`} onClick={() =>props.onShow(row.data,row.dayNum)} >
                             {row.dayNum}
                     </Button>
                 </td>
@@ -40,7 +40,7 @@ function Calendarobject(props) {
               cells = []; // empty container 
               cells.push(
                 <td className="calendar-day" data={row.data}>
-                    <Button  variant={`${row.flag? "":"outline-dark"} d-inline rounded-circle`} >
+                    <Button  variant={`${row.flag? "outline-dark":""} d-inline rounded-circle`} onClick={() =>props.onShow(row.data,row.dayNum)} >
                             {row.dayNum}
                     </Button>
                 </td>
