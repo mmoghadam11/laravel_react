@@ -4,7 +4,7 @@ import { AppContext } from "../../contexts/AppContext";
 import { Row,Col } from 'react-bootstrap';
 import Calendarobject from './Calendarobject.js';
 import Tab from './Tab.js';
-import ModalForm from './ModalForm.js';
+import ModalForm from './modal/ModalForm.js';
 import Spin from './Spin.js';
 // import { useMediaQuery } from 'react-responsive';
 
@@ -54,14 +54,14 @@ function Calendar() {
   
   // data for modal component   
   const [dataprop, setDataprop] = useState(null);
-  const [day, setDay] = useState(null);    
+  const [seleacted, setSelected] = useState(null);    
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = (row,d) => {
     setShow(true);
     row.hasOwnProperty(userName)?setDataprop(row[userName]):setDataprop(null);
-    setDay(d);
-    console.log(dataprop,day)
+    setSelected(d);
+    console.log(dataprop,d)
   }
   return (
     <Row className=''>
@@ -80,7 +80,7 @@ function Calendar() {
         </Row>
         <Row>
           <Col>
-              <ModalForm show={show} onClose={handleClose} modalData={dataprop} day={day}/>
+              <ModalForm show={show} onClose={handleClose} modalData={dataprop} day={seleacted} month={month}/>
           </Col>
         </Row>
       </Col>
