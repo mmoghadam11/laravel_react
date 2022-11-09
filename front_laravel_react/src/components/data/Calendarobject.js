@@ -28,7 +28,7 @@ function Calendarobject(props) {
         array!==null&&array.forEach((row, i) => {
             if (row.day !== 'شنبه') {
               cells.push(
-                <td className="calendar-day" data={row.data}>
+                <td key={i} className="calendar-day" data={row.data}>
                   {/* {console.log(row.data)} */}
                     <Button  variant={`${row.flag? "outline-dark" :""} d-inline rounded-circle`} onClick={() =>props.onShow(row.data,row.dayNum)} >
                             {row.dayNum}
@@ -39,7 +39,7 @@ function Calendarobject(props) {
               rows.push(<tr>{cells}</tr>); // when reach next week we contain all td in last week to rows 
               cells = []; // empty container 
               cells.push(
-                <td className="calendar-day" data={row.data}>
+                <td key={i} className="calendar-day" data={row.data}>
                     <Button  variant={`${row.flag? "outline-dark":""} d-inline rounded-circle`} onClick={() =>props.onShow(row.data,row.dayNum)} >
                             {row.dayNum}
                     </Button>

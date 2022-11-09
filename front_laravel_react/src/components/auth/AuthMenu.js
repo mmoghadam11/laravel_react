@@ -22,14 +22,14 @@ const AuthMenu = (props) => {
       </div>
       {props.loggedIn ? null : (
         <div className="">
-          <Button variant="outline-info"
+          <Button variant="outline-dark"
             className="mt-3"
             onClick={() => changeAuthStatusSignup()}
           >
             {/* Signup */}
             ثبت نام
           </Button>
-          <Button variant="outline-info"
+          <Button variant="outline-dark"
             className="mt-3"
             onClick={() => changeAuthStatusLogin()}
           >

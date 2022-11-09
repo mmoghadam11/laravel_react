@@ -62,7 +62,7 @@ const AuthLogin = () => {
 
           {/* SUBMIT BUTTON */}
           <div className="d-grid ">
-            <Button type="submit" variant="outline-info" 
+            <Button type="submit" variant="outline-success" 
             // className="btn btn-primary" 
             // onClick={() => login()}
             >

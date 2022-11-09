@@ -61,7 +61,7 @@ function Calendar() {
     setShow(true);
     row.hasOwnProperty(userName)?setDataprop(row[userName]):setDataprop(null);
     setSelected(d);
-    console.log(dataprop,d)
+    console.log('dataprop',dataprop,d)
   }
   return (
     <Row className=''>
@@ -75,7 +75,7 @@ function Calendar() {
             </Col>
             <Col sm="12" md="6">
               <h4> جدول {month}ماه</h4>
-              <Tab dayNum={dayweek} calarray={calendararray}/>
+              <Tab Name={userName} dayNum={dayweek} calarray={calendararray}/>
             </Col>
         </Row>
         <Row>
