@@ -69,12 +69,12 @@ function Calendar(props) {
       <Col sm={{span:10 , offset:1}} >
         <Row>
           {props.flag==='cal'?
-            <Col sm="12" md={{span:6 , offset:3}}  style={{overflow:'auto',height:'20em'}}>
+            <Col sm="12" md={{span:6 , offset:3}}  style={{overflow:'auto',height:'21em'}}>
               <h4>{month} ماه</h4>
               <Calendarobject dayNum={dayweek} calarray={calendararray} onShow={handleShow} modalData={[dataprop, setDataprop]} />
             </Col>
             :
-            <Col sm="12" md={{span:6 , offset:3}} style={{overflow:'auto',height:'20em'}} >
+            <Col sm="12" md={{span:6 , offset:3}} style={{overflow:'auto',height:'21em'}} >
               <h4> جدول {month}ماه</h4>
               <Tab Name={userName} dayNum={dayweek} calarray={calendararray}/>
             </Col>}
