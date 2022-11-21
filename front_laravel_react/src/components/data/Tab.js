@@ -11,35 +11,38 @@ import { Button } from 'react-bootstrap';
 // }
 function Tab(props) {
   return (
-    <Table borderless size="sm">
-      <thead>
-        <tr>
-            <th>تاید شده🖊</th> 
-            <th >ساعت کاری⏲</th> 
-            <th>روز📅</th>                  
-        </tr>
-      </thead>
-      <tbody>
-        {/* <tr><td className="calendar-day">hhh</td></tr> */}
-        {/* {form()} */}
-        {props.calarray.map((item,i)=>
-          <tr key={i} data={item.data}>
-            <td className="calendar-day" >
-              {/* {console.warn(item)} */}
-              {item.data.hasOwnProperty(props.Name)?item.data[props.Name]['val']===true?'🟢':'🟡':'-'}
-            </td>
-            <td className="calendar-day" >
-              {/* {console.warn(item.data)} */}
-              {item.data.hasOwnProperty(props.Name)?item.data[props.Name]['H']:'--:--'}
-            </td>
-            <td className="calendar-day" >
-              #{item.dayNum}
-            </td>
+    // <div style={{overflow:'auto',height:'20em'}} >
+      <Table borderless size="sm" >
+        <thead>
+          <tr>
+            <th>تاید شده🖊</th>
+            <th >ساعت کاری⏲</th>
+            <th>روز📅</th>
           </tr>
-        )
-        }
-      </tbody>
-    </Table>
+        </thead>
+        <tbody>
+          {/* <tr><td className="calendar-day">hhh</td></tr> */}
+          {/* {form()} */}
+          {props.calarray.map((item, i) =>
+            <tr key={i} data={item.data}>
+              <td className="calendar-day" >
+                {/* {console.warn(item)} */}
+                {item.data.hasOwnProperty(props.Name) ? item.data[props.Name]['val'] === true ? '🟢' : '🟡' : '-'}
+              </td>
+              <td className="calendar-day" >
+                {/* {console.warn(item.data)} */}
+                {item.data.hasOwnProperty(props.Name) ? item.data[props.Name]['H'] : '--:--'}
+              </td>
+              <td className="calendar-day" >
+                #{item.dayNum}
+              </td>
+            </tr>
+          )
+          }
+        </tbody>
+      </Table>
+    // </div>
+
   )
 }
 

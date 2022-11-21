@@ -15,7 +15,6 @@ function ModalForm(props) {
               <Form.Label>شروع ساعت کاری</Form.Label>
               <Form.Control
                 type="time"
-                
                 placeholder={`${props.modalData? props.modalData.user:"null"}`}
                 autoFocus
               />

@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import Container from 'react-bootstrap/Container';
+import Header from '../header/Header';
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 // import Row from 'react-bootstrap/Row';
 // import Col from 'react-bootstrap/Col';
 
@@ -26,7 +28,7 @@ const AuthContainer = () => {
 
   return (
     <Container>
-      <div className={showLoginForm + "  py-4"}>
+      <div className={showLoginForm + " py-4"}>
         <AuthLogin option="login" />
       </div>
       <div className={showSignupForm + " py-4"}>
@@ -34,8 +36,17 @@ const AuthContainer = () => {
       </div>
       <div className={showLoggedIn + " py-4"}>
         <AuthLogout />
-        {authStatus === LOGGED_IN &&<Calendar/>}
-        
+        {authStatus === LOGGED_IN &&
+        <>
+        <BrowserRouter>
+            <Header />
+        <Routes>
+            <Route index path='/' element={<Calendar flag='cal' />}/>
+            <Route path='/table' element={<Calendar flag='tab'/>}/>
+            <Route path='/dashboard'></Route>
+          </Routes>
+        </BrowserRouter>
+        </>}
       </div>
       <div className={showNotLoggedIn + " py-4"}>
         <AuthNotLoggedIn />

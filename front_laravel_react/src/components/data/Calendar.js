@@ -9,7 +9,7 @@ import Spin from './Spin.js';
 // import { useMediaQuery } from 'react-responsive';
 
 
-function Calendar() {
+function Calendar(props) {
     const appContext = useContext(AppContext);
     const {
         userName
@@ -18,7 +18,6 @@ function Calendar() {
       const [month, setMonth] = useState(null);
       const [dayweek, setDayweek] = useState(null);
       const [token, setToken] = useState(localStorage.getItem('User_Token'));
-      // setToken(localStorage.getItem('User_Token'));
 
     async function fetchData() {
       let hostName = "";
@@ -61,7 +60,7 @@ function Calendar() {
     setShow(true);
     row.hasOwnProperty(userName)?setDataprop(row[userName]):setDataprop(null);
     setSelected(d);
-    console.log('dataprop',dataprop,d)
+    // console.log('dataprop',dataprop,d)
   }
   return (
     <Row className=''>
@@ -69,14 +68,16 @@ function Calendar() {
       {calendararray===null?<Col><Spin/></Col>:
       <Col sm={{span:10 , offset:1}} >
         <Row>
-            <Col sm="12" md="6">
+          {props.flag==='cal'?
+            <Col sm="12" md={{span:6 , offset:3}}  style={{overflow:'auto',height:'20em'}}>
               <h4>{month} ماه</h4>
               <Calendarobject dayNum={dayweek} calarray={calendararray} onShow={handleShow} modalData={[dataprop, setDataprop]} />
             </Col>
-            <Col sm="12" md="6">
+            :
+            <Col sm="12" md={{span:6 , offset:3}} style={{overflow:'auto',height:'20em'}} >
               <h4> جدول {month}ماه</h4>
               <Tab Name={userName} dayNum={dayweek} calarray={calendararray}/>
-            </Col>
+            </Col>}
         </Row>
         <Row>
           <Col>
