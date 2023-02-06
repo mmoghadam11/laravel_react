@@ -14,7 +14,7 @@ function header() {
                         <NavLink activeClassName='is-active' to='/'>تقویم </NavLink>
                     </Nav.Item>
                     <Nav.Item>
-                        <NavLink activeClassName='is-active' to='/table'>جدول  </NavLink>
+                        <NavLink activeClassName='is-active' to='/table'>جدول </NavLink>
                     </Nav.Item>
 
                     {JSON.parse(localStorage.getItem('User_data')).role === 'admin' ?

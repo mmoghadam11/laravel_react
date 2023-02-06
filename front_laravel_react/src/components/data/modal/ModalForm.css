@@ -1,3 +1,110 @@
 input[type=time]::-webkit-datetime-edit-ampm-field {
     display: none;
     }
+    
+    
+    /* input [type="number"]::-webkit-inner-spin-button,
+    input [type="number"]::-webkit-outer-spin-button{
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type="number"]{
+        -moz-appearance: textfield;
+    } */
+
+    input:invalid {
+        border: 3px solid red;
+    }
+
+    /* .break {
+        flex-basis: 100%;
+        height: 0;
+      } */
+
+
+    .timeLable{
+        display:block;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .Timeplace {
+        display: flex;
+        /* flex-wrap: wrap; */
+        justify-content: space-around;
+        align-items: center;
+        /* padding: 25px; */
+
+        font-size: 42px;
+        max-width: 400px;
+        margin: 0 auto;
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 2px 3px 10px rgba(4, 4, 4, 0.362);
+        margin-bottom: 30px;
+    }
+
+    .hour ,
+    .min{
+        background: none;
+        font-size: 42px !important;
+        appearance: none;
+        border: none !important;
+        outline: none;
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .Timeplace .hourPlace .hr_up,
+    .Timeplace .hourPlace .hr_down,
+    .Timeplace .minPlace .min_up,
+    .Timeplace .minPlace .min_down{
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        
+        width: 40px;
+        height: 20px;
+
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+
+        cursor: pointer;
+    }
+
+    .Timeplace .hourPlace .hr_up,
+    .Timeplace .minPlace .min_up{
+        top: -10px;
+        border-bottom:20px solid #aaa ;
+    }
+    .Timeplace .hourPlace .hr_down,
+    .Timeplace .minPlace .min_down{
+        
+        bottom: -10px;
+        border-top:20px solid #aaa ;
+    }
+    /* .minPlace ,
+    .hourPlace{
+        display: block;
+    } */
+
+
+    .Timeplace .hourPlace .hr_up:hover,
+    .Timeplace .hourPlace .hr_down:hover,
+    .Timeplace .minPlace .min_up:hover,
+    .Timeplace .minPlace .min_down:hover{
+        border-bottom-color: #53565a;
+        border-top-color: #53565a;
+    }
+
+    #text{
+        display: block;
+        text-align: right;
+        justify-content: right;
+    }
+    textarea{
+        text-align: right;
+    }
