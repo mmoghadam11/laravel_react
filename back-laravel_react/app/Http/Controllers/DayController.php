@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Day;
 use Illuminate\Http\Request;
+use App\Services\CalendarService;
 
 class DayController extends Controller
 {
@@ -81,5 +82,11 @@ class DayController extends Controller
     public function destroy(Day $day)
     {
         //
+    }
+    public function usermounth(Request $request,CalendarService $CalendarService)
+    {
+        $user=$request->user();
+        [$array,$dayofweek,$month,$today]=$CalendarService->calendar($user);
+        return response()->json(['calendar'=>$array,'dayofweek'=>$dayofweek,'month'=>$month,'today'=>$today], 200);
     }
 }

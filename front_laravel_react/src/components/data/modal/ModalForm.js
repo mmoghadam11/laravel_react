@@ -92,7 +92,7 @@ function ModalForm(props) {
                   onClick={() =>{
                     if(start_m===59){
                       setStart_m(0);
-                      start_h===0?setStart_h(23):setStart_h(start_h-1)
+                      start_h===23?setStart_h(0):setStart_h(start_h+1)
                     }
                     else
                     setStart_m(parseInt(start_m)+1);
@@ -148,7 +148,7 @@ function ModalForm(props) {
                   onClick={() =>{
                     if(end_m===59){
                       setEnd_m(0);
-                      end_h===0?setEnd_h(23):setEnd_h(end_h-1)
+                      end_h===23?setEnd_h(0):setEnd_h(end_h+1)
                     }
                     else
                     setEnd_m(parseInt(end_m)+1);

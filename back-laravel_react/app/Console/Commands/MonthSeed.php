@@ -7,6 +7,7 @@ use Illuminate\Console\Command;
 
 use Hekmatinasser\Verta\Verta;
 use App\Models\Day;
+use Carbon\Carbon;
 
 
 class MonthSeed extends Command
@@ -32,6 +33,7 @@ class MonthSeed extends Command
      */
     public function handle()
     {
+        $this->info('month seeding started...');
         if($today=new verta()==verta()->startMonth()->subWeek())
         {
             
@@ -44,9 +46,10 @@ class MonthSeed extends Command
         {
             $data=['time'=>$day->format('%B %d، %Y'),'day'=>$day->formatWord('l')];
             array_push($array, $data);
-            
+            $this->info($day->timestamp);
             $createdDay = Day::factory()->create([
-                'time' => $day->timestamp,
+                // 'time' => $day->timestamp,
+                'time'=>Carbon::instance($day->datetime())
             ]);
 
             $day=$day->addDay();

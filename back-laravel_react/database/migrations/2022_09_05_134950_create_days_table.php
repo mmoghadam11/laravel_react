@@ -13,10 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('days', function ($collection) {
-            $collection->id();
-            $collection->timestamps();
+        Schema::create('days', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
         });
+        // Schema::create('days', function ($collection) {
+        //     $collection->id();
+        //     $collection->timestamps();
+        // });
     }
 
     /**

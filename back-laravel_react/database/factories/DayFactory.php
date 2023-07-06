@@ -29,8 +29,8 @@ class DayFactory extends Factory
         // dd($dayData['user']);
         $today=new verta();
         return [
-            'data'=>[$dayData['user']=>$dayData],
-            'time'=>$today->timestamp,
+            'data'=>json_encode([$dayData['user']=>$dayData]),
+            'time'=>$today,
         ];
     }
 }

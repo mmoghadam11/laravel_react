@@ -5,6 +5,9 @@ use App\Models\Day;
 use App\Models\User;
 use App\Services\CalendarService;
 
+use Hekmatinasser\Verta\Verta;
+use Carbon\Carbon;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +20,11 @@ use App\Services\CalendarService;
 */
 
 Route::get('/', function () {
+    $day=new verta();
+    $createdDay = Day::factory()->create([
+        'time' => Carbon::instance($day->datetime()),
+    ]);
+    dd($createdDay);
     return view('welcome');
 });
 

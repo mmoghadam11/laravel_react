@@ -26,10 +26,11 @@ class CalendarService {
         foreach ($days as $day){
             $time=verta($day->time);
             $flag=false;
-            if(array_key_exists($userName, $day->data)){
+            // dd(json_decode($day->data));
+            if(array_key_exists($userName, json_decode($day->data,true))){
                 $flag=true;
             }
-            $data=['data'=>$day->data,'time'=>$time->format('%B %d، %Y'),'day'=>$time->formatWord('l'),'dayNum'=>$time->format('%d'),'flag'=>$flag];
+            $data=['data'=>json_decode($day->data,true),'time'=>$time->format('%B %d، %Y'),'day'=>$time->formatWord('l'),'dayNum'=>$time->format('%d'),'flag'=>$flag];
             array_push($array, $data);  
         }
 

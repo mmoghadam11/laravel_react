@@ -8,6 +8,7 @@ use App\Models\Day;
 use Hekmatinasser\Verta\Verta;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DayController;
 use App\Services\CalendarService;
 // ****************************************
 
@@ -48,11 +49,7 @@ Route::get('/data', function (Request $request) {
 });
 
 
-Route::middleware('auth:sanctum')->post('/time', function (Request $request,CalendarService $CalendarService) {
-    $user=$request->user();
-    [$array,$dayofweek,$month,$today]=$CalendarService->calendar($user);
-    return response()->json(['calendar'=>$array,'dayofweek'=>$dayofweek,'month'=>$month,'today'=>$today], 200);
+Route::middleware('auth:sanctum')->prefix('/user')->group(function(){
+    Route::post('/time', [DayController::class,'usermounth']);
 });
-// Route::post('/me', function (Request $request) {
-//     return response()->json(['user'=>$request->user()]);
-// });
+
