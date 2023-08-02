@@ -1,10 +1,11 @@
+@import "./M.css";
+
 .App {
+  display: flex;
+  align-items: center;
   text-align: center;
-
-  background: #FFEFBA;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #FFFFFF, #FFEFBA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  height: 100vh;
+  
 }
 
 .App-logo {
@@ -31,6 +32,22 @@
 
 .App-link {
   color: #61dafb;
+}
+
+@font-face {
+  font-family: "Yekan";
+  src: url('fonts/yekan-font/Yekan.eot');
+  src: url('fonts/yekan-font/Yekan.eot?#iefix') format('Yekan-opentype'),
+       url('fonts/yekan-font/Yekan.woff') format('woff'),
+       url('fonts/yekan-font/Yekan.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+.yekan {
+  font-family: "Yekan";
 }
 
 @keyframes App-logo-spin {

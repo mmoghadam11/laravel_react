@@ -8,7 +8,7 @@ const AuthMenu = (props) => {
   const appContext = useContext(AppContext);
   const { changeAuthStatusLogin, changeAuthStatusSignup } = appContext;
   return (
-    <div className="flex justify-center w-full">
+    <div className={"flex justify-center w-full "+ props.c}>
       {props.loggedIn ? null :(
         <div className="">
         {/* Authentication */}

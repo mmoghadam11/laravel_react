@@ -63,18 +63,18 @@ function Calendar(props) {
     // console.log('dataprop',dataprop,d)
   }
   return (
-    <Row className=''>
+    <Row className='' style={{height:"65vh"}}>
       {/* <h3>{useMediaQuery({ query: `(max-width: 760px)` })}</h3> */}
-      {calendararray===null?<Col><Spin/></Col>:
-      <Col sm={{span:10 , offset:1}} >
-        <Row>
+      {calendararray===null?<Col className="d-flex align-items-center justify-content-center"><Spin/></Col>:
+      <Col sm={{span:10 , offset:1}}  >
+        <Row className="glass" style={{overflow:'auto',height:'25em'}}>
           {props.flag==='cal'?
-            <Col sm="12" md={{span:6 , offset:3}}  style={{overflow:'auto',height:'21em'}}>
+            <Col sm="12" md={{span:8 , offset:2}} style={{overflow:'auto'}} >
               <h4>{month} ماه</h4>
               <Calendarobject dayNum={dayweek} calarray={calendararray} onShow={handleShow} modalData={[dataprop, setDataprop]} />
             </Col>
             :
-            <Col sm="12" md={{span:6 , offset:3}} style={{overflow:'auto',height:'21em'}} >
+            <Col sm="12" md={{span:8 , offset:2}}  >
               <h4> جدول {month}ماه</h4>
               <Tab Name={userName} dayNum={dayweek} calarray={calendararray}/>
             </Col>}

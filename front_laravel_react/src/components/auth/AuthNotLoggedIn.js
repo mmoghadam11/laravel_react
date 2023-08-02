@@ -15,7 +15,7 @@ const AuthNotLoggedIn = () => {
     login,
   } = appContext;
   return (
-    <Row md={5}>
+    <Row md={5} className="glass align-items-center yekan fs-4">
       <Col sm="12" md="6">
         {/* <span>you are not loggedIn</span>  */}
         <span>شماهنوز وارد نشده‌اید</span>

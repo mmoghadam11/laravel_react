@@ -1,4 +1,5 @@
 import React from 'react'
+import { BsGearWideConnected,BsFillCalendarWeekFill } from "react-icons/bs";
 import './Header.css'
 import { Navbar, Nav ,Container} from 'react-bootstrap'
 import { NavLink } from "react-router-dom"
@@ -6,12 +7,12 @@ import { NavLink } from "react-router-dom"
 function header() {
     return (
         <Navbar bg='dark' variant="dark">
-            <Container>
+            <Container className='yekan'>
                 <Navbar.Brand href='#home'>خانه</Navbar.Brand>
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">
                     <Nav.Item>
-                        <NavLink activeClassName='is-active' to='/'>تقویم </NavLink>
+                        <NavLink activeClassName='is-active' to='/'>تقویم<BsFillCalendarWeekFill/> </NavLink>
                     </Nav.Item>
                     <Nav.Item>
                         <NavLink activeClassName='is-active' to='/table'>جدول </NavLink>
@@ -19,7 +20,7 @@ function header() {
 
                     {JSON.parse(localStorage.getItem('User_data')).role === 'admin' ?
                         <Nav.Item>
-                            <NavLink activeClassName='is-active' to='/dashboard'>مدیریت </NavLink>
+                            <NavLink activeClassName='is-active' to='/dashboard'> مدیریت<BsGearWideConnected/></NavLink>
                         </Nav.Item> : null}
                 </Navbar.Collapse>
             </Container>

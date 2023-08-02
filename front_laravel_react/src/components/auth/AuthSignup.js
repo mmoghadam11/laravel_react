@@ -31,14 +31,16 @@ const AuthSignup = () => {
     setHidePassword(!hidePassword);
   }
   return (
-    <Row>
-      <Col sm="12" md="6">
-
-        <Form onSubmit={(e) => signup(e)}>
-        <h3>Sign In</h3>
+    <Row className="h--75 ">
+      <Col sm="12" md="6" className="">
+        <AuthMenu loggedIn={false} c={'glass yekan fs-4'} />
+      </Col>
+      <Col sm="12" md="6" >
+        <Form onSubmit={(e) => signup(e)} className="glass">
+        <h3 className="yekan">ثبت نام</h3>
         {/* USER NAME */}
         <div className="mb-3">
-          <label><IoMdPerson className="" />name</label>
+          <label>نام<IoMdPerson className="" /></label>
           <input
             name="name"
             type="text"
@@ -50,7 +52,7 @@ const AuthSignup = () => {
         </div>
         {/* EMAIL */}
         <div className="mb-3">
-          <label><MdEmail className="" />Email address</label>
+          <label>آدرس ایمیل<MdEmail className="" /></label>
           <input
             type="email"
             name="email"
@@ -62,7 +64,7 @@ const AuthSignup = () => {
         </div>
         {/* HIDDEN PASSWORD */}
         <div className={showHiddenPassword +"mb-3"}>
-          <label><GoKey className="" />Password</label>
+          <label>رمز عبور<GoKey className="" /></label>
           <input
             name="password"
             type="password"
@@ -112,7 +114,7 @@ const AuthSignup = () => {
           className="btn btn-primary" 
           // onClick={() => signup()}
           >
-            Sign Up
+            ثبت
           </Button>
         </div>
         
@@ -120,9 +122,6 @@ const AuthSignup = () => {
           {errorMessage}
         </div>
         </Form>
-      </Col>
-      <Col sm="12" md="6">
-        <AuthMenu loggedIn={false} />
       </Col>
     </Row>
   );
