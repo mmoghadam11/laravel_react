@@ -12,15 +12,15 @@ function header() {
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">
                     <Nav.Item>
-                        <NavLink activeClassName='is-active' to='/'>تقویم<BsFillCalendarWeekFill/> </NavLink>
+                        <NavLink  to='/'>تقویم<BsFillCalendarWeekFill/> </NavLink>
                     </Nav.Item>
                     <Nav.Item>
-                        <NavLink activeClassName='is-active' to='/table'>جدول </NavLink>
+                        <NavLink  to='/table'>جدول </NavLink>
                     </Nav.Item>
 
                     {JSON.parse(localStorage.getItem('User_data')).role === 'admin' ?
                         <Nav.Item>
-                            <NavLink activeClassName='is-active' to='/dashboard'> مدیریت<BsGearWideConnected/></NavLink>
+                            <NavLink  to='/dashboard'> مدیریت<BsGearWideConnected/></NavLink>
                         </Nav.Item> : null}
                 </Navbar.Collapse>
             </Container>

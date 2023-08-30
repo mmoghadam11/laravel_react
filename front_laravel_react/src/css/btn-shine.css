@@ -1,0 +1,6 @@
+.btn-primary.glow-button:hover {
+    box-shadow:0 0 30px #0b81ff;
+  }
+  .btn-succsess.glow-button {
+    box-shadow:0 0 30px #28a745;
+  }

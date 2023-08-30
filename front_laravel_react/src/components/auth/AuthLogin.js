@@ -39,7 +39,7 @@ const AuthLogin = () => {
           {/* EMAIL */}
           {/* <div className="mb-3" > */}
             <FormGroup className="mb-3">
-              <label for="email">ایمیل<MdEmail className="" /></label>
+              <label htmlFor="email">ایمیل<MdEmail className="" /></label>
               <input 
                 id="email"
                 type="email"
@@ -56,7 +56,7 @@ const AuthLogin = () => {
 
           {/* HIDDEN PASSWORD */}
           <div className={"mb-3"}>
-            <label for="pass" >رمز<GoKey className="" /></label>
+            <label htmlFor="pass" >رمز<GoKey className="" /></label>
             <input
               id="pass"
               name="password"
@@ -70,7 +70,7 @@ const AuthLogin = () => {
 
           {/* SUBMIT BUTTON */}
           <div className="d-grid ">
-            <Button type="submit" variant="outline-success" 
+            <Button type="submit" variant="primary" className="glow-button "
             // className="btn btn-primary" 
             // onClick={() => login()}
             >

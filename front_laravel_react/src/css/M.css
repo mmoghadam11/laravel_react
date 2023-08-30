@@ -1,0 +1,25 @@
+@import "./btn-shine.css";
+@import "./glass.css";
+
+body{
+  direction: rtl;
+  background: #FFEFBA;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #FFFFFF, #FFEFBA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  height: 100vh;
+  background: linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(1, 1, 1,0.9)),
+   url("../../public/background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.row{
+  flex-direction: row-reverse ;
+}
+
+.h--75 {height: 55vh;}
+
+.rounded-circle{
+  font-size: calc(0.9rem + 0.3vw)!important;
+}
+  

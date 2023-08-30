@@ -53,14 +53,17 @@ function Calendar(props) {
   
   // data for modal component   
   const [dataprop, setDataprop] = useState(null);
-  const [seleacted, setSelected] = useState(null);    
+  const [selected, setSelected] = useState(null);
+  const [daytime, setDaytime] = useState(null);        
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
-  const handleShow = (row,d) => {
-    setShow(true);
-    row.hasOwnProperty(userName)?setDataprop(row[userName]):setDataprop(null);
-    setSelected(d);
-    // console.log('dataprop',dataprop,d)
+  const handleShow = (row,d,t) => {
+        setShow(true);
+        row.hasOwnProperty(userName)?setDataprop(row[userName]):setDataprop(null);
+        setSelected(d);
+        setDaytime(t);
+        console.log('dataprop',dataprop,'\n day:',d,'\n row.time:',t);
+        // console.log('dataprop',dataprop,d)
   }
   return (
     <Row className='' style={{height:"65vh"}}>
@@ -81,7 +84,7 @@ function Calendar(props) {
         </Row>
         <Row>
           <Col>
-              <ModalForm show={show} onClose={handleClose} modalData={dataprop} day={seleacted} month={month}/>
+              <ModalForm show={show} onClose={handleClose} modalData={dataprop} day={{'num':selected,'full':daytime}} month={month}/>
           </Col>
         </Row>
       </Col>
